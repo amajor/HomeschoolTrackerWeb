@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/amajor/HomeschoolTrackerWeb.svg?branch=main)](https://travis-ci.com/amajor/HomeschoolTrackerWeb)
+
 # HomeschoolTrackerWeb
  A java application written to demonstrate several Object Oriented Programming design patterns. Built to run as a REST API with a web interface.
 
