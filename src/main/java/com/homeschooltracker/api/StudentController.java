@@ -15,11 +15,13 @@ public class StudentController {
 
     // Aggregate root
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/students")
     List<Student> all() {
         return repository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/students")
     Student newStudent(@RequestBody Student newStudent) {
         return repository.save(newStudent);
@@ -27,6 +29,7 @@ public class StudentController {
 
     // Single item
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/students/{id}")
     Student one(@PathVariable Long id) {
 
@@ -34,6 +37,7 @@ public class StudentController {
                 .orElseThrow(() -> new StudentNotFoundException(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/students/{id}")
     Student replaceStudent(@RequestBody Student newStudent, @PathVariable Long id) {
 
@@ -48,6 +52,7 @@ public class StudentController {
                 });
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/students/{id}")
     void deleteStudent(@PathVariable Long id) {
         repository.deleteById(id);

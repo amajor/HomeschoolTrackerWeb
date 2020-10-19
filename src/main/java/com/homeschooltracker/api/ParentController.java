@@ -15,11 +15,13 @@ public class ParentController {
 
     // Aggregate root
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/parents")
     List<Parent> all() {
         return repository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/parents")
     Parent newParent(@RequestBody Parent newParent) {
         return repository.save(newParent);
@@ -27,6 +29,7 @@ public class ParentController {
 
     // Single item
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/parents/{id}")
     Parent one(@PathVariable Long id) {
 
@@ -34,6 +37,7 @@ public class ParentController {
                 .orElseThrow(() -> new ParentNotFoundException(id));
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PutMapping("/parents/{id}")
     Parent replaceParent(@RequestBody Parent newParent, @PathVariable Long id) {
 
@@ -48,6 +52,7 @@ public class ParentController {
                 });
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @DeleteMapping("/parents/{id}")
     void deleteParent(@PathVariable Long id) {
         repository.deleteById(id);
