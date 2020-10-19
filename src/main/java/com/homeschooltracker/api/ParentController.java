@@ -35,7 +35,7 @@ public class ParentController {
     }
 
     @PutMapping("/parents/{id}")
-    Parent replaceEmployee(@RequestBody Parent newParent, @PathVariable Long id) {
+    Parent replaceParent(@RequestBody Parent newParent, @PathVariable Long id) {
 
         return repository.findById(id)
                 .map(employee -> {
@@ -49,7 +49,7 @@ public class ParentController {
     }
 
     @DeleteMapping("/parents/{id}")
-    void deleteEmployee(@PathVariable Long id) {
+    void deleteParent(@PathVariable Long id) {
         repository.deleteById(id);
     }
 }

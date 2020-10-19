@@ -2,13 +2,20 @@ package com.homeschooltracker.domain.users;
 
 import com.homeschooltracker.domain.content.Task;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
+@Entity
 public class Student {
-    String name;
-    ArrayList<Task> taskArrayList = new ArrayList<>();
+    private @Id @GeneratedValue Long id;
+    private String name;
+    private ArrayList<Task> taskArrayList = new ArrayList<>();
 
+    public Student() {}
     public Student(String name)
     {
         this.name = name;
@@ -16,6 +23,18 @@ public class Student {
 
     public String getName() {
         return name;
+    }
+
+    public Long getId() {
+        return this.id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void add(Task subject) {
@@ -49,5 +68,26 @@ public class Student {
                 (task) -> task.printStudentTasks()
             );
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (this == o)
+            return true;
+        if (!(o instanceof Student))
+            return false;
+        Student student = (Student) o;
+        return Objects.equals(this.id, student.id) && Objects.equals(this.name, student.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.id, this.name);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Student{id='%d', name='%s'}", id, name);
     }
 }
